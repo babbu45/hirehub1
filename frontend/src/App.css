@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; 
+    --foreground: 20 14.3% 4.1%; 
+    --card: 0 0% 100%;
+    --primary: 24 9.8% 10%; 
+    --secondary: 60 4.8% 95.9%;
+    --muted: 60 4.8% 95.9%;
+    --accent: 60 4.8% 95.9%;
+    --destructive: 0 84.2% 60.2%;
+    --border: 20 5.9% 90%; 
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --primary: 60 9.1% 97.8%;
+    --secondary: 12 6.5% 15.1%;
+    --muted: 12 6.5% 15.1%;
+    --accent: 12 6.5% 15.1%;
+    --destructive: 0 62.8% 30.6%;
+  }
+
+  
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; 
+  }
+
+  
+  body, html {
+    height: 100%;
+  }
+
+  main {
+    min-height: calc(100vh - 3rem); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@layer utilities {
+  .gradient {
+    @apply bg-gradient-to-br from-gray-500 via-gray-200 to-white;
+  }
+
+  .gradient-title {
+    @apply bg-gradient-to-br from-gray-500 via-gray-200 to-gray-500 bg-clip-text text-transparent;
+  }
+
+  @layer utilities {
+    
+    .button-outline {
+      @apply border border-gray-700 text-gray-700 bg-white px-4 py-2 rounded-lg;
+    }
+  
+    
+    .button-outline:hover {
+      @apply bg-gray-200;
+    }
+  
+    .link-logo img {
+      display: block;
+    }
+  }
+  
+  .link-logo img {
+    display: block;
+  }
+
+  
+  .footer {
+    @apply bg-gray-800 text-white py-10;
+  }
+}
+.accordion-trigger {
+  @apply text-gray-800; /* You can adjust the color as needed */
+}
+
+.dark .accordion-trigger {
+  @apply text-foreground; /* Ensures visibility in dark mode */
+}
+
