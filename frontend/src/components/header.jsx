@@ -7,7 +7,7 @@ const Header = () => {
       <Link to="/" className="link-logo">
         <img src="logo.png" className="h-20" alt="logo" />
       </Link>
-      <Button className="button-outline">Login</Button>
+      <Button className="button-outline">LOGIN</Button>
     </nav>
   );
 };
