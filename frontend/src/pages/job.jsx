@@ -3,7 +3,7 @@ import React from 'react'
 const JobPage = () => {
   return (
     <div>
-      jobpage
+      jobpage1
     </div>
   )
 }
