@@ -7,7 +7,7 @@ import JobPage from "./pages/job";
 import PostJob from "./pages/post-job";
 import SavedJobs from "./pages/saved-jobs";
 import MyJobs from "./pages/my-jobs";
-import './App.css'; // Ensure this file exists and Tailwind CSS is properly imported
+import './App.css'; 
 import ProtectedRoute from "./components/protectedroute";
 
 const router = createBrowserRouter([
