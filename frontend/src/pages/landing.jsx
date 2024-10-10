@@ -30,10 +30,10 @@ const LandingPage = () => {
       </section>
       <div className="flex gap-6 justify-centre py-10">
         <Link to="/jobS">
-        <Button variant="blue" size="xl">Find Jobs</Button>
+        <Button variant="blue" size="xl" className="rounded-full">Find Jobs</Button>
         </Link>
         <Link to="/post-job">
-        <Button size="xl" variant="red">Post a Job</Button>
+        <Button size="xl" variant="red"className="rounded-full">Post a Job</Button>
         </Link>
       </div>
       <Carousel plugins={[Autoplay({ delay: 2000 })]} className="w-full py-10">

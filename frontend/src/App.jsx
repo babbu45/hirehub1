@@ -5,9 +5,10 @@ import Onboarding from "./pages/onboarding";
 import JobListing from "./pages/job-listings";
 import JobPage from "./pages/job";
 import PostJob from "./pages/post-job";
-import SavedJobs from "./pages/save-jobs";
+import SavedJobs from "./pages/saved-jobs";
 import MyJobs from "./pages/my-jobs";
 import './App.css'; // Ensure this file exists and Tailwind CSS is properly imported
+import ProtectedRoute from "./components/protectedroute";
 
 const router = createBrowserRouter([
   {
@@ -19,27 +20,58 @@ const router = createBrowserRouter([
       },
       {
         path: "/jobs",
-        element: <JobListing />,
+        element: (
+          <ProtectedRoute>
+            <JobListing />
+          </ProtectedRoute>
+
+        ),
       },
       {
         path: "/job/:id",
-        element: <JobPage />,
+        element: (
+          <ProtectedRoute>
+            <JobPage />
+          </ProtectedRoute>
+
+        ),
       },
       {
         path: "/post-job",
-        element: <PostJob />,
+        element: (
+          <ProtectedRoute>
+            <PostJob />
+          </ProtectedRoute>
+
+        ),
       },
       {
         path: "/onboarding",
-        element: <Onboarding />,
+        element: 
+        (
+          <ProtectedRoute>
+            <Onboarding />
+          </ProtectedRoute>
+
+        ),
       },
       {
-        path: "/saved-job",
-        element: <SavedJobs />,
+        path: "/saved-jobs",
+        element: (
+          <ProtectedRoute>
+            <SavedJobs />
+          </ProtectedRoute>
+
+        ),
       },
       {
         path: "/my-jobs",
-        element: <MyJobs />,
+        element: (
+          <ProtectedRoute>
+            <MyJobs />
+          </ProtectedRoute>
+
+        ),
       },
     ],
   },
