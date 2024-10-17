@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { BarLoader } from "react-spinners";// Use the updated mock data API
+import { BarLoader } from "react-spinners";
 import useFetch from "@/hooks/use-fetch"; // Hook for API requests
+import { applyToJob } from "@/api/apiApplicatios"; // Mock API for applying to job
 
 // Define form validation schema using Zod
 const schema = z.object({
@@ -55,9 +56,13 @@ export function ApplyJobDrawer({ user, job, applied = false, fetchJob }) {
       name: user.fullName,
       status: "applied",
       resume: data.resume[0], // Handle resume file upload
-    }).then(() => {
-      fetchJob(); // Refresh the job data
-      reset(); // Reset the form after submission
+    }).then((response) => {
+      if (response.status === 200) {
+        fetchJob(); // Refresh the job data
+        reset(); // Reset the form after submission
+      } else {
+        console.error(response.message);
+      }
     });
   };
 
