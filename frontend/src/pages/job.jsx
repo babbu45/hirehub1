@@ -4,21 +4,36 @@ import { useParams } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 import { Briefcase, MapPinIcon } from "lucide-react";
 import mockJobsData from "@/mockJobsData"; // Import your mock data
+import { ApplyJobDrawer } from "@/components/ApplyJobDrawer"; // Import ApplyJobDrawer
 
 const JobPage = () => {
   const { id } = useParams(); // assuming you're using react-router
   const { isLoaded, user } = useUser(); // Clerk user hook
   const [job, setJob] = useState(null);
   const [loadingJob, setLoadingJob] = useState(true);
+  const [applied, setApplied] = useState(false);
 
-  // Simulating the fetch logic but using mock data instead
+  // Fetch job data and check if the user has already applied
   useEffect(() => {
     if (isLoaded) {
       const jobData = mockJobsData.jobs.find((job) => job.id === id);
       setJob(jobData);
+
+      // Check if the user has already applied for this job
+      const userApplication = jobData?.applications?.find(
+        (app) => app.candidate_id === user?.id
+      );
+      setApplied(!!userApplication);
+
       setLoadingJob(false); // Set loading to false after the data is fetched
     }
-  }, [isLoaded, id]);
+  }, [isLoaded, id, user]);
+
+  // Fetch job data again (used in ApplyJobDrawer)
+  const fetchJob = () => {
+    const updatedJobData = mockJobsData.jobs.find((job) => job.id === id);
+    setJob(updatedJobData);
+  };
 
   if (!isLoaded || loadingJob) {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
@@ -42,10 +57,10 @@ const JobPage = () => {
         </div>
         <div className="flex items-center space-x-2">
           <Briefcase className="h-5 w-5" />
-          <p>0 Applicants</p> {/* Mock applicants count */}
+          <p>{job?.applications?.length || 0} Applicants</p> {/* Display number of applicants */}
         </div>
         <div className="badge bg-green-500 text-white px-3 py-1">
-          {"Open"} {/* Assuming the job is open in mock data */}
+          {job?.isOpen ? "Open" : "Closed"} {/* Job open/closed status */}
         </div>
       </div>
 
@@ -65,14 +80,17 @@ const JobPage = () => {
         </ul>
       </div>
 
-      {/* Apply Button */}
-      {user?.id !== job?.recruiter_id && (
-        <div className="mt-8">
-          <button className="bg-blue-600 text-white font-bold py-2 px-4 rounded">
-            Apply for this Job
-          </button>
-        </div>
-      )}
+      {/* Apply Button or Drawer */}
+      <div className="mt-8">
+        {user?.id !== job?.recruiter_id && (
+          <ApplyJobDrawer
+            user={user}
+            job={job}
+            applied={applied}
+            fetchJob={fetchJob}
+          />
+        )}
+      </div>
     </div>
   );
 };
