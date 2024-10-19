@@ -35,6 +35,12 @@ const LandingPage = () => {
         <Link to="/post-job">
         <Button size="xl" variant="red"className="rounded-full">Post a Job</Button>
         </Link>
+        <Link to="/cold">
+        <Button size="xl" variant="green"className="rounded-full">Generate Cold Emails</Button>
+        </Link>
+        <Link to="/res">
+        <Button size="xl" variant="yellow"className="rounded-full">Review Resume</Button>
+        </Link>
       </div>
       <Carousel plugins={[Autoplay({ delay: 2000 })]} className="w-full py-10">
         <CarouselContent className="flex gap-5 sm:gap-20 items-center">
