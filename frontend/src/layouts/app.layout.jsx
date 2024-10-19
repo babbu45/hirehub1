@@ -15,9 +15,9 @@ const AppLayout = () => {
         
       </main>
       
-      <footer className="footer text-center">
+      {/* <footer className="footer text-center">
         Made with ❤ by Prav
-      </footer>
+      </footer> */}
     </div>
   );
 };
