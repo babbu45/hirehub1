@@ -9,7 +9,8 @@ import SavedJobs from "./pages/saved-jobs";
 import MyJobs from "./pages/my-jobs";
 import './App.css'; // Ensure this file exists and Tailwind CSS is properly imported
 import ProtectedRoute from "./components/protectedroute";
-
+import Resume from "./pages/Resume";
+import ColdEmail from "./pages/ColdEmail";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -73,6 +74,14 @@ const router = createBrowserRouter([
 
         ),
       },
+      {
+        path:"/res",
+        element:<Resume/>
+      },
+      {
+        path:"/cold",
+        element:<ColdEmail/>
+      }
     ],
   },
 ]);

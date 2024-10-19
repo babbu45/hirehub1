@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 px-6 flex justify-between items-center w-full bg-white shadow-md">
+      <nav className="py-1 px-6 flex justify-between items-center w-full bg-white shadow-md">
         <Link to="/" className="link-logo">
           <img src="logo.png" className="h-20" alt="logo" />
         </Link>
